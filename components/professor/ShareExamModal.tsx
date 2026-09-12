@@ -266,12 +266,12 @@ Best regards,
 ${exam.professorName}
 Powered by Proctorly`;
 
-  const embedCode = `<iframe 
-  src="${directJoinUrl}" 
-  width="100%" 
-  height="700" 
-  frameborder="0" 
-  allow="camera; microphone; fullscreen; display-capture" 
+  const embedCode = `<iframe
+  src="${directJoinUrl}"
+  width="100%"
+  height="700"
+  frameborder="0"
+  allow="camera; microphone; fullscreen; display-capture"
   title="${exam.title}">
 </iframe>`;
 
@@ -549,7 +549,7 @@ Powered by Proctorly`;
               </div>
 
               {/* Big PIN Display */}
-              <div className="relative mx-auto max-w-sm rounded-2xl border-2 border-indigo-500/40 bg-gradient-to-b from-indigo-950/40 to-zinc-950 p-8 shadow-inner">
+              <div className="relative mx-auto max-w-sm rounded-2xl border-2 border-indigo-500/40 bg-linear-to-b from-indigo-950/40 to-zinc-950 p-8 shadow-inner">
                 <div className="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">
                   OFFICIAL ACCESS PIN
                 </div>
