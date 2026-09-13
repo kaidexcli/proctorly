@@ -1,28 +1,44 @@
-# Proctorly 🛡️ — Two-Sided Online Examination Platform
+# Proctorly 🛡️ — Two-Sided Zero-Trust Online Examination Platform
 
-Proctorly is a secure, zero-trust online assessment and proctoring platform designed for academic institutions and universities. It features an isolated, strictly monitored test environment for students and a real-time surveillance, distribution, and grading command center for professors.
+Proctorly is a high-security, zero-trust online assessment and live surveillance platform designed for universities, academic institutions, and credentialing boards. It combines a strictly locked-down client examination room with biometric tracking, and a real-time professor command center with multi-camera surveillance grids, cohort intercom broadcasting, and omnichannel test distribution.
 
 ---
 
 ## 🚀 Key Architectural Pillars
 
 ### 1. Dual-Sided Experience
-- **Student Portal (`/` and `/exam/[id]`)**:
-  - Access test via 6-character PIN, direct URL, or QR code scan.
-  - Pre-Exam System Diagnostics (Webcam framing check, microphone decibel test, fullscreen lock test, Academic Honor Oath).
-  - Secure Anti-Cheat Exam Room with HUD video PIP, countdown timer, question navigator, and dynamic watermark protection.
-  - Certified submission screen with academic integrity rating, digital SHA-256 certificate hash, and printable report.
-- **Professor / Proctor Hub (`/professor`)**:
-  - **Exam Management**: Create, edit, and distribute assessments with tailored anti-cheat policies.
-  - **Omnichannel Sharing Suite**: Link generator, dynamic QR codes, access PINs, batch email invitations, printable desk vouchers, and LMS `<iframe>` embeds.
-  - **Live Proctoring Command Center**: Real-time grid of candidate webcams, live audio meters, face status tags, proctor broadcast warning sender, and remote disqualification / time extension controls.
-  - **Forensic Results & Audits**: Candidate submission breakdown, chronological violation history, and CSV export.
+- **Student Examination Portal (`/` and `/exam/[id]`)**:
+  - **Instant Check-in**: Access tests via 6-character PIN, direct URL slug, or dynamic QR scan.
+  - **Pre-Exam System Diagnostics**: Biometric facial framing guide, decibel microphone noise floor calibration, server network ping latency monitor, and HTML5 canvas digital honor oath signature pad.
+  - **Secure Anti-Cheat Exam Room**: HUD video PIP with biometric targeting reticle, countdown timer with tick alarms, question navigator, and dynamic forensic watermark protection.
+  - **Student Focus Utilities**: Built-in floating scratchpad for rough work, pop-out scientific calculator, font size scaler (`A` / `A+` / `A++`), and Zen Focus concentration mode.
+  - **Certified Credential View**: Gold holographic academic integrity medallion (`.hologram-card`), dynamic certificate verification QR badge, SHA-256 hash digest, and printable official diploma slip.
+
+- **Professor Command Hub (`/professor`)**:
+  - **Exam Creator with AI Presets**: Syllabus builder, one-click academic preset templates, and live security strength rating meter.
+  - **Omnichannel Sharing Suite**: Direct clean URL links, dynamic high-res QR code generator, 6-character PIN dispenser, printable student desk vouchers, LMS `<iframe>` embeds, and Google Classroom/Teams broadcast links.
+  - **Live Proctoring Command Center**: Real-time surveillance grid of candidate webcams, thermal IR / matrix / biometric mesh camera filters, cohort intercom broadcast to all candidates, spotlight mode on highest-risk examinees, and remote +5m time extension / disqualification controls.
+  - **Forensic Results & Audits**: Candidate submission breakdown, chronological violation history, and 1-click CSV export.
+
+---
+
+## 🎨 Creative Design & Interactive Features
+
+| Creative Feature | Description |
+| :--- | :--- |
+| **Dual Light & Dark Mode Engine** | Seamless client-side theme switcher in the Navbar with localStorage persistence and zero-hydration flash. Designed with diffuse ambient gradients (`mesh-gradient-light`, `mesh-gradient-dark`), layered card elevations, and frosted glass, replacing heavy retro grids with a sleek, accessible modern interface. |
+| **Interactive Anti-Cheat Sandbox** | Live testing playground on the landing page where visitors simulate tab switches, Alt-Tab blur, clipboard pastes, F12 inspects, and noise spikes, watching the integrity gauge drop and recover. |
+| **Web Audio Synthesizer Engine** | Zero-dependency browser-synthesized audio cues (soft sci-fi UI clicks, success chimes, pulsed alarm buzzers on security breaches, and mechanical countdown clock ticks). Toggleable via Navbar. |
+| **Biometric Face Wireframe HUD** | Real-time SVG targeting crosshairs, animated laser scanning lines, gaze vector indicators, and AI confidence telemetry on the candidate video PIP. |
+| **Digital Honor Oath Signature Pad** | Interactive HTML5 canvas where students draw their legal signature with touch/mouse (or type name) before unlocking the test room. |
+| **Gold Holographic Integrity Seal** | Dynamic shiny holographic medallion with light-sheen reflection and cryptographic verification QR badge on the submission certificate. |
+| **Student Scratchpad & Calculator** | Built-in collapsible private notepad for rough work and a full-featured pop-out scientific calculator for STEM assessments. |
+| **Cohort Intercom Broadcast** | Instructor tool to transmit real-time directives or time warnings to all active student screens simultaneously. |
+| **Thermal IR & Surveillance Filters** | Real-time visual filter toggles for proctors: Standard, Night-Vision Thermal IR, and Biometric Neural Mesh. |
 
 ---
 
 ## 🔒 Comprehensive Anti-Cheating Defenses
-
-Proctorly includes an extensive suite of browser and AI-driven anti-cheating mechanisms:
 
 | Anti-Cheat Feature | Implementation & Enforcement |
 | :--- | :--- |
@@ -41,8 +57,6 @@ Proctorly includes an extensive suite of browser and AI-driven anti-cheating mec
 ---
 
 ## 🌐 Omnichannel Professor Sharing Suite
-
-Professors have the most extensive set of distribution tools available:
 
 1. **Direct Link Generation**:
    - Clean, shareable URL with optional custom slug (`/exam/cs350-fall-midterm`).
@@ -68,8 +82,10 @@ Professors have the most extensive set of distribution tools available:
 
 - **Framework**: Next.js 16 (Turbopack, App Router)
 - **Language**: TypeScript 5
-- **Styling**: Tailwind CSS v4
+- **Theming & Styling**: Tailwind CSS v4 with dual Light & Dark mode support, diffuse ambient mesh gradients, layered elevations, and custom keyframes
+- **Theming Provider**: Custom zero-flash `ThemeProvider` (`lib/themeContext.tsx`)
 - **Icons**: Lucide React
+- **Audio Engine**: Custom Web Audio API Synthesizer (`lib/soundEffects.ts`)
 - **QR Engine**: `qrcode`
 - **State & Synchronization**: Custom reactive store with `localStorage` and HTML5 `BroadcastChannel` for instant multi-window real-time updates.
 
@@ -91,3 +107,4 @@ npm run dev
 ### Quick Demo Exams (Preloaded):
 - **CS 350: Operating Systems Midterm** — Access PIN: `OS-8821` (Passcode: `SYS2026`)
 - **BIO 210: Molecular Genetics Quiz** — Access PIN: `BIO-4402`
+- **CYBER 402: Zero-Trust Final** — Available via Exam Creator Templates
