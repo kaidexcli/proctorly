@@ -77,18 +77,18 @@ function ProfessorDashboardContent() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 mesh-gradient-light dark:mesh-gradient-dark px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-200">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Top Professor Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="rounded-md bg-indigo-950 border border-indigo-700/50 px-2.5 py-0.5 text-xs font-bold text-indigo-300">
+              <span className="rounded-md bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800/80 px-2.5 py-0.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
                 INSTRUCTOR PORTAL
               </span>
-              <span className="text-xs text-zinc-400">Live Assessment Control & Surveillance</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">Live Assessment Control & Surveillance</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white">
+            <h1 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white">
               Professor Command Center
             </h1>
           </div>
@@ -96,7 +96,7 @@ function ProfessorDashboardContent() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsCreatorOpen(true)}
-              className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 transition-colors"
+              className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-700 shadow-md shadow-indigo-600/20 transition-colors"
             >
               <PlusCircle className="h-4 w-4" />
               <span>Create Proctored Exam</span>
@@ -105,13 +105,13 @@ function ProfessorDashboardContent() {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex border-b border-zinc-800 gap-2 overflow-x-auto pb-1">
+        <div className="flex border-b border-zinc-200 dark:border-zinc-800 gap-2 overflow-x-auto pb-1">
           <button
             onClick={() => setActiveTab('exams')}
             className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
               activeTab === 'exams'
-                ? 'border-indigo-500 text-indigo-400 font-bold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
             <Layers className="h-4 w-4" />
@@ -122,11 +122,11 @@ function ProfessorDashboardContent() {
             onClick={() => setActiveTab('monitor')}
             className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
               activeTab === 'monitor'
-                ? 'border-indigo-500 text-indigo-400 font-bold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
-            <Eye className="h-4 w-4 text-emerald-400" />
+            <Eye className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             <span>Live Proctoring Grid</span>
           </button>
 
@@ -134,11 +134,11 @@ function ProfessorDashboardContent() {
             onClick={() => setActiveTab('results')}
             className={`flex items-center gap-2 border-b-2 py-3 px-4 text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
               activeTab === 'results'
-                ? 'border-indigo-500 text-indigo-400 font-bold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-bold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
-            <BarChart3 className="h-4 w-4 text-cyan-400" />
+            <BarChart3 className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
             <span>Results & Forensic Audits</span>
           </button>
         </div>
