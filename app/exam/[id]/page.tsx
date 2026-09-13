@@ -53,16 +53,16 @@ export default function ExamSessionPage({ params }: ExamPageProps) {
 
   if (!exam) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center p-4">
-        <div className="w-full max-w-md rounded-3xl border border-zinc-800 bg-zinc-900 p-8 text-center shadow-2xl">
-          <AlertCircle className="h-12 w-12 text-amber-400 mx-auto mb-3" />
-          <h2 className="text-xl font-bold text-white">Exam Not Found</h2>
-          <p className="text-xs text-zinc-400 mt-1 mb-6">
-            The exam identifier <code className="text-indigo-400 font-mono">{examId}</code> could not be located or has ended.
+      <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex flex-col items-center justify-center p-4 transition-colors">
+        <div className="w-full max-w-md rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 text-center shadow-xl dark:shadow-2xl">
+          <AlertCircle className="h-12 w-12 text-amber-500 dark:text-amber-400 mx-auto mb-3" />
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white">Exam Not Found</h2>
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 mb-6">
+            The exam identifier <code className="text-indigo-600 dark:text-indigo-400 font-mono">{examId}</code> could not be located or has ended.
           </p>
           <a
             href="/"
-            className="inline-flex rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500"
+            className="inline-flex rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 shadow-sm"
           >
             Return to Portal
           </a>
@@ -119,7 +119,7 @@ export default function ExamSessionPage({ params }: ExamPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col justify-center py-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 mesh-gradient-light dark:mesh-gradient-dark flex flex-col justify-center py-8 transition-colors">
       {/* STAGE 1: IDENTIFY / ACCESS PIN */}
       {stage === 'identify' && (
         <div className="p-4">
