@@ -1,28 +1,28 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import QRCode from 'qrcode';
+import { examStore } from '@/lib/examStore';
 import { Exam } from '@/types/exam';
 import {
-  X,
-  Copy,
   Check,
-  QrCode,
-  Link as LinkIcon,
-  KeyRound,
-  Mail,
-  Code2,
-  Download,
-  Printer,
-  ExternalLink,
-  Sparkles,
-  ShieldCheck,
   Clock,
-  Share2,
+  Code2,
+  Copy,
+  Download,
+  ExternalLink,
+  KeyRound,
+  Link as LinkIcon,
+  Mail,
+  Printer,
+  QrCode,
   RefreshCw,
   Send,
+  Share2,
+  ShieldCheck,
+  Sparkles,
+  X,
 } from 'lucide-react';
-import { examStore } from '@/lib/examStore';
+import QRCode from 'qrcode';
+import { useEffect, useRef, useState } from 'react';
 
 interface ShareExamModalProps {
   exam: Exam;
@@ -277,40 +277,39 @@ Powered by Proctorly`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto">
-      <div className="relative w-full max-w-3xl rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-3xl rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-800 px-6 py-5 bg-zinc-900/90">
+        <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 px-6 py-5 bg-zinc-50/80 dark:bg-zinc-900/90">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-600/20 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30">
               <Share2 className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                 Share Exam
-                <span className="rounded-md bg-indigo-950 px-2 py-0.5 text-xs font-semibold text-indigo-300 border border-indigo-700/50">
+                <span className="rounded-md bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700/50">
                   {exam.courseCode}
                 </span>
               </h3>
-              <p className="text-xs text-zinc-400">Distribute this assessment to students through multiple secure channels</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">Distribute this assessment to students through multiple secure channels</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
+            className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-zinc-800 bg-zinc-950/50 px-6 gap-2 overflow-x-auto">
+        <div className="flex border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50 px-6 gap-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('link')}
-            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-              activeTab === 'link'
-                ? 'border-indigo-500 text-indigo-400 font-semibold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
-            }`}
+            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'link'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-semibold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+              }`}
           >
             <LinkIcon className="h-4 w-4" />
             <span>Direct Link</span>
@@ -318,11 +317,10 @@ Powered by Proctorly`;
 
           <button
             onClick={() => setActiveTab('qr')}
-            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-              activeTab === 'qr'
-                ? 'border-indigo-500 text-indigo-400 font-semibold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
-            }`}
+            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'qr'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-semibold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+              }`}
           >
             <QrCode className="h-4 w-4" />
             <span>QR Code</span>
@@ -330,11 +328,10 @@ Powered by Proctorly`;
 
           <button
             onClick={() => setActiveTab('code')}
-            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-              activeTab === 'code'
-                ? 'border-indigo-500 text-indigo-400 font-semibold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
-            }`}
+            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'code'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-semibold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+              }`}
           >
             <KeyRound className="h-4 w-4" />
             <span>Access PIN</span>
@@ -342,11 +339,10 @@ Powered by Proctorly`;
 
           <button
             onClick={() => setActiveTab('email')}
-            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-              activeTab === 'email'
-                ? 'border-indigo-500 text-indigo-400 font-semibold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
-            }`}
+            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'email'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-semibold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+              }`}
           >
             <Mail className="h-4 w-4" />
             <span>Email Invite</span>
@@ -354,11 +350,10 @@ Powered by Proctorly`;
 
           <button
             onClick={() => setActiveTab('embed')}
-            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
-              activeTab === 'embed'
-                ? 'border-indigo-500 text-indigo-400 font-semibold'
-                : 'border-transparent text-zinc-400 hover:text-zinc-200'
-            }`}
+            className={`flex items-center gap-2 border-b-2 py-3 px-3 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'embed'
+                ? 'border-indigo-600 text-indigo-600 dark:border-indigo-500 dark:text-indigo-400 font-semibold'
+                : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
+              }`}
           >
             <Code2 className="h-4 w-4" />
             <span>LMS Embed</span>
@@ -371,7 +366,7 @@ Powered by Proctorly`;
           {activeTab === 'link' && (
             <div className="space-y-6">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
                   Direct Student Access URL
                 </label>
                 <div className="flex items-center gap-2">
@@ -380,12 +375,12 @@ Powered by Proctorly`;
                       type="text"
                       readOnly
                       value={directJoinUrl}
-                      className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-zinc-200 font-mono focus:outline-none"
+                      className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-4 py-3 text-sm text-zinc-800 dark:text-zinc-200 font-mono focus:outline-none shadow-sm"
                     />
                   </div>
                   <button
                     onClick={() => handleCopy(directJoinUrl, 'directUrl')}
-                    className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+                    className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors shadow-sm"
                   >
                     {copiedField === 'directUrl' ? (
                       <>
@@ -403,7 +398,7 @@ Powered by Proctorly`;
                     href={directJoinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800 p-3 text-zinc-300 hover:text-white hover:bg-zinc-700 transition-colors"
+                    className="flex items-center justify-center rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 p-3 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                     title="Open in new tab to test"
                   >
                     <ExternalLink className="h-4 w-4" />
@@ -412,15 +407,15 @@ Powered by Proctorly`;
               </div>
 
               {/* Security info pill */}
-              <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-4">
+              <div className="rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/80 dark:bg-emerald-950/20 p-4">
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="h-5 w-5 text-emerald-400 mt-0.5" />
-                  <div className="text-xs text-emerald-200/90 leading-relaxed">
-                    <strong className="text-emerald-300 block mb-1">Pre-authenticated Security Parameters Active</strong>
+                  <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mt-0.5" />
+                  <div className="text-xs text-emerald-800 dark:text-emerald-200/90 leading-relaxed">
+                    <strong className="text-emerald-900 dark:text-emerald-300 block mb-1">Pre-authenticated Security Parameters Active</strong>
                     Students opening this link will be directed straight to the secure pre-exam diagnostics suite with the access code pre-filled.
                     {exam.sharingSettings.passcode && (
-                      <span className="block mt-1 text-zinc-300">
-                        Exam Passcode: <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-indigo-300 font-mono">{exam.sharingSettings.passcode}</code>
+                      <span className="block mt-1 text-zinc-700 dark:text-zinc-300">
+                        Exam Passcode: <code className="bg-white dark:bg-zinc-800 border border-emerald-200 dark:border-transparent px-1.5 py-0.5 rounded text-indigo-700 dark:text-indigo-300 font-mono">{exam.sharingSettings.passcode}</code>
                       </span>
                     )}
                   </div>
@@ -429,7 +424,7 @@ Powered by Proctorly`;
 
               {/* Social / Classroom Quick share */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-3">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
                   One-Click Broadcast Channels
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -438,9 +433,9 @@ Powered by Proctorly`;
                       const shareUrl = `https://classroom.google.com/share?url=${encodeURIComponent(directJoinUrl)}&title=${encodeURIComponent(exam.title)}`;
                       window.open(shareUrl, '_blank');
                     }}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-200 hover:bg-zinc-700 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                   >
-                    <Sparkles className="h-4 w-4 text-amber-400" />
+                    <Sparkles className="h-4 w-4 text-amber-500 dark:text-amber-400" />
                     <span>Google Classroom</span>
                   </button>
 
@@ -449,9 +444,9 @@ Powered by Proctorly`;
                       const shareUrl = `https://teams.microsoft.com/share?href=${encodeURIComponent(directJoinUrl)}&msgText=${encodeURIComponent(`Take ${exam.courseCode} Exam: ${exam.title}`)}`;
                       window.open(shareUrl, '_blank');
                     }}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-200 hover:bg-zinc-700 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                   >
-                    <Share2 className="h-4 w-4 text-indigo-400" />
+                    <Share2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                     <span>Microsoft Teams</span>
                   </button>
 
@@ -460,9 +455,9 @@ Powered by Proctorly`;
                       const msg = `Exam Link for ${exam.courseCode} (${exam.title}): ${directJoinUrl}`;
                       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
                     }}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-200 hover:bg-zinc-700 transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/80 px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                   >
-                    <Send className="h-4 w-4 text-emerald-400" />
+                    <Send className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     <span>WhatsApp / Chat</span>
                   </button>
                 </div>
@@ -496,31 +491,31 @@ Powered by Proctorly`;
               {/* QR Actions & Options */}
               <div className="flex-1 space-y-4 text-left w-full">
                 <div>
-                  <h4 className="text-base font-bold text-white mb-1">Instant QR Code Access</h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <h4 className="text-base font-bold text-zinc-900 dark:text-white mb-1">Instant QR Code Access</h4>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     Display this code on the projector screen in an auditorium, or print desk slips for physical testing halls. Students scan with their phone or laptop camera to launch the secured exam environment.
                   </p>
                 </div>
 
-                <div className="rounded-xl bg-zinc-950 border border-zinc-800 p-3.5 space-y-1.5 text-xs text-zinc-300 font-mono">
+                <div className="rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3.5 space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Access Code:</span>
-                    <span className="font-bold text-white">{currentCode}</span>
+                    <span className="font-bold text-zinc-900 dark:text-white">{currentCode}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Duration:</span>
-                    <span className="text-zinc-300">{exam.durationMinutes} Minutes</span>
+                    <span className="text-zinc-700 dark:text-zinc-300">{exam.durationMinutes} Minutes</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Security Mode:</span>
-                    <span className="text-emerald-400">Strict AI Proctoring</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Strict AI Proctoring</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <button
                     onClick={handleDownloadQR}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-600/20"
                   >
                     <Download className="h-4 w-4" />
                     <span>Download PNG</span>
@@ -528,9 +523,9 @@ Powered by Proctorly`;
 
                   <button
                     onClick={handlePrintSlip}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:bg-zinc-700 hover:text-white transition-colors"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white shadow-sm transition-colors"
                   >
-                    <Printer className="h-4 w-4 text-emerald-400" />
+                    <Printer className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     <span>Print Exam Voucher</span>
                   </button>
                 </div>
@@ -542,23 +537,23 @@ Powered by Proctorly`;
           {activeTab === 'code' && (
             <div className="space-y-6 text-center">
               <div>
-                <h4 className="text-base font-bold text-white mb-1">Student Entry PIN</h4>
-                <p className="text-xs text-zinc-400 max-w-md mx-auto">
+                <h4 className="text-base font-bold text-zinc-900 dark:text-white mb-1">Student Entry PIN</h4>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
                   Students can join from any browser by navigating to the Proctorly portal and typing this 6-character code.
                 </p>
               </div>
 
               {/* Big PIN Display */}
-              <div className="relative mx-auto max-w-sm rounded-2xl border-2 border-indigo-500/40 bg-linear-to-b from-indigo-950/40 to-zinc-950 p-8 shadow-inner">
-                <div className="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">
+              <div className="relative mx-auto max-w-sm rounded-2xl border-2 border-indigo-400/50 dark:border-indigo-500/40 bg-gradient-to-b from-indigo-50/60 via-white to-white dark:from-indigo-950/40 dark:to-zinc-950 p-8 shadow-inner">
+                <div className="text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">
                   OFFICIAL ACCESS PIN
                 </div>
-                <div className="text-4xl sm:text-5xl font-mono font-black tracking-widest text-white drop-shadow-md">
+                <div className="text-4xl sm:text-5xl font-mono font-black tracking-widest text-zinc-900 dark:text-white drop-shadow-sm">
                   {currentCode}
                 </div>
                 {exam.sharingSettings.passcode && (
-                  <div className="mt-4 pt-4 border-t border-zinc-800 text-xs text-zinc-400">
-                    Required Passcode: <span className="text-white font-mono font-bold">{exam.sharingSettings.passcode}</span>
+                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-600 dark:text-zinc-400">
+                    Required Passcode: <span className="text-zinc-900 dark:text-white font-mono font-bold">{exam.sharingSettings.passcode}</span>
                   </div>
                 )}
               </div>
@@ -567,7 +562,7 @@ Powered by Proctorly`;
               <div className="flex justify-center items-center gap-3">
                 <button
                   onClick={() => handleCopy(currentCode, 'pin')}
-                  className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
+                  className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-600/20"
                 >
                   {copiedField === 'pin' ? (
                     <>
@@ -584,7 +579,7 @@ Powered by Proctorly`;
 
                 <button
                   onClick={handleRegenerateCode}
-                  className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm font-semibold text-zinc-300 hover:text-white hover:bg-zinc-700 transition-colors"
+                  className="flex items-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-4 py-2.5 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                   title="Generate a new randomized PIN"
                 >
                   <RefreshCw className="h-4 w-4" />
@@ -598,7 +593,7 @@ Powered by Proctorly`;
           {activeTab === 'email' && (
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                   Recipient Email Addresses
                 </label>
                 <input
@@ -606,16 +601,16 @@ Powered by Proctorly`;
                   placeholder="student1@university.edu, student2@university.edu..."
                   value={emailRecipients}
                   onChange={(e) => setEmailRecipients(e.target.value)}
-                  className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-xs sm:text-sm text-zinc-200 placeholder-zinc-500 focus:border-indigo-500 focus:outline-none"
+                  className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-4 py-2.5 text-xs sm:text-sm text-zinc-900 dark:text-zinc-200 placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-indigo-500 focus:outline-none shadow-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                   Invitation Email Preview
                 </label>
-                <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 text-xs font-mono text-zinc-300 whitespace-pre-wrap max-h-52 overflow-y-auto leading-relaxed">
-                  <div className="text-zinc-500 mb-2 border-b border-zinc-800 pb-1">
+                <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-4 text-xs font-mono text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap max-h-52 overflow-y-auto leading-relaxed">
+                  <div className="text-zinc-500 mb-2 border-b border-zinc-200 dark:border-zinc-800 pb-1">
                     Subject: {emailSubject}
                   </div>
                   {emailBodyTemplate}
@@ -625,11 +620,11 @@ Powered by Proctorly`;
               <div className="flex justify-between items-center pt-2">
                 <button
                   onClick={() => handleCopy(emailBodyTemplate, 'emailBody')}
-                  className="flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-200 hover:bg-zinc-700 transition-colors"
+                  className="flex items-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-4 py-2.5 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                 >
                   {copiedField === 'emailBody' ? (
                     <>
-                      <Check className="h-4 w-4 text-emerald-400" />
+                      <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                       <span>Email Copied to Clipboard!</span>
                     </>
                   ) : (
@@ -645,7 +640,7 @@ Powered by Proctorly`;
                     setInvitesSent(true);
                     setTimeout(() => setInvitesSent(false), 3000);
                   }}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-600/20"
+                  className="flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-emerald-500 transition-colors shadow-md shadow-emerald-600/20"
                 >
                   {invitesSent ? (
                     <>
@@ -667,8 +662,8 @@ Powered by Proctorly`;
           {activeTab === 'embed' && (
             <div className="space-y-4">
               <div>
-                <h4 className="text-base font-bold text-white mb-1">LMS & Portal Iframe Embed</h4>
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <h4 className="text-base font-bold text-zinc-900 dark:text-white mb-1">LMS & Portal Iframe Embed</h4>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   Embed this secure test directly into Blackboard, Canvas, Moodle, or custom school portals. Permissions for camera, microphone, and fullscreen are pre-configured in the iframe attribute header.
                 </p>
               </div>
@@ -678,14 +673,14 @@ Powered by Proctorly`;
                   readOnly
                   rows={4}
                   value={embedCode}
-                  className="w-full rounded-xl border border-zinc-700 bg-zinc-950 p-3 text-xs font-mono text-zinc-300 focus:outline-none"
+                  className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 p-3 text-xs font-mono text-zinc-800 dark:text-zinc-300 focus:outline-none"
                 />
               </div>
 
               <div className="flex justify-end">
                 <button
                   onClick={() => handleCopy(embedCode, 'embedCode')}
-                  className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+                  className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-indigo-700 shadow-md shadow-indigo-600/20 transition-colors"
                 >
                   {copiedField === 'embedCode' ? (
                     <>
@@ -705,14 +700,14 @@ Powered by Proctorly`;
         </div>
 
         {/* Footer */}
-        <div className="border-t border-zinc-800 bg-zinc-950/70 px-6 py-4 flex justify-between items-center text-xs text-zinc-500">
+        <div className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 px-6 py-4 flex justify-between items-center text-xs text-zinc-500">
           <div className="flex items-center gap-2">
             <Clock className="h-3.5 w-3.5 text-zinc-400" />
             <span>Active until: {new Date(Date.now() + 3600000 * 24 * 7).toLocaleDateString()}</span>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg bg-zinc-800 px-4 py-1.5 font-medium text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors"
+            className="rounded-lg bg-zinc-200 dark:bg-zinc-800 px-4 py-1.5 font-medium text-zinc-800 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             Done
           </button>

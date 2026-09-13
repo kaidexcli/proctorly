@@ -39,10 +39,10 @@ export default function ExamList({
 
   if (exams.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-zinc-800 p-12 text-center bg-zinc-950/40">
-        <Shield className="mx-auto h-12 w-12 text-zinc-600 mb-4" />
-        <h3 className="text-lg font-semibold text-white">No Exams Found</h3>
-        <p className="text-sm text-zinc-400 mt-1 mb-6">Create your first anti-cheat secured online exam to start testing students.</p>
+      <div className="rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-800 p-12 text-center bg-white/50 dark:bg-zinc-950/40">
+        <Shield className="mx-auto h-12 w-12 text-zinc-400 dark:text-zinc-600 mb-4" />
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">No Exams Found</h3>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1 mb-6">Create your first anti-cheat secured online exam to start testing students.</p>
       </div>
     );
   }
@@ -53,85 +53,85 @@ export default function ExamList({
         {exams.map((exam) => (
           <div
             key={exam.id}
-            className="group relative rounded-2xl border border-zinc-800 bg-zinc-900/90 p-6 shadow-xl hover:border-zinc-700 transition-all flex flex-col justify-between"
+            className="group relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 p-6 shadow-md dark:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between"
           >
             <div>
               {/* Header tags */}
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-indigo-950 border border-indigo-700/50 px-2.5 py-0.5 text-xs font-bold text-indigo-300">
+                  <span className="rounded-md bg-indigo-50 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-700/50 px-2.5 py-0.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
                     {exam.courseCode}
                   </span>
                   <span
                     className={`rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider ${
                       exam.status === 'active'
-                        ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/60'
-                        : 'bg-zinc-800 text-zinc-400'
+                        ? 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60'
+                        : 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400'
                     }`}
                   >
                     {exam.status}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1 text-xs font-mono font-bold text-zinc-300 bg-zinc-950 border border-zinc-800 px-2.5 py-1 rounded-lg">
-                  <KeyRound className="h-3.5 w-3.5 text-indigo-400" />
+                <div className="flex items-center gap-1 text-xs font-mono font-bold text-zinc-700 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 rounded-lg">
+                  <KeyRound className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
                   <span>{exam.accessCode}</span>
                 </div>
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
                 {exam.title}
               </h3>
-              <p className="text-xs text-zinc-400 mt-1.5 line-clamp-2 leading-relaxed">
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1.5 line-clamp-2 leading-relaxed">
                 {exam.description}
               </p>
 
               {/* Meta stats */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-400 my-4 py-3 border-y border-zinc-800/80">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-600 dark:text-zinc-400 my-4 py-3 border-y border-zinc-200 dark:border-zinc-800/80">
                 <div className="flex items-center gap-1.5">
-                  <Clock className="h-4 w-4 text-indigo-400" />
+                  <Clock className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
                   <span>{exam.durationMinutes} mins</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <FileText className="h-4 w-4 text-emerald-400" />
+                  <FileText className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
                   <span>{exam.questions.length} Questions</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Shield className="h-4 w-4 text-amber-400" />
+                  <Shield className="h-4 w-4 text-amber-500 dark:text-amber-400" />
                   <span>Max {exam.securitySettings.maxViolationsAllowed} Violations</span>
                 </div>
               </div>
 
               {/* Security Shield Badges */}
               <div className="mb-5">
-                <span className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider block mb-2">
+                <span className="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-2">
                   Active Anti-Cheat Defenses:
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {exam.securitySettings.fullscreenEnforced && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-950 border border-zinc-800 px-2 py-1 text-[11px] text-zinc-300">
-                      <Maximize className="h-3 w-3 text-emerald-400" /> Fullscreen Lock
+                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2 py-1 text-[11px] text-zinc-700 dark:text-zinc-300">
+                      <Maximize className="h-3 w-3 text-emerald-500 dark:text-emerald-400" /> Fullscreen Lock
                     </span>
                   )}
                   {exam.securitySettings.webcamRequired && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-950 border border-zinc-800 px-2 py-1 text-[11px] text-zinc-300">
-                      <Video className="h-3 w-3 text-indigo-400" /> AI Face Tracking
+                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2 py-1 text-[11px] text-zinc-700 dark:text-zinc-300">
+                      <Video className="h-3 w-3 text-indigo-500 dark:text-indigo-400" /> AI Face Tracking
                     </span>
                   )}
                   {exam.securitySettings.audioMonitoring && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-950 border border-zinc-800 px-2 py-1 text-[11px] text-zinc-300">
-                      <Mic className="h-3 w-3 text-cyan-400" /> Decibel Monitor
+                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2 py-1 text-[11px] text-zinc-700 dark:text-zinc-300">
+                      <Mic className="h-3 w-3 text-cyan-500 dark:text-cyan-400" /> Decibel Monitor
                     </span>
                   )}
                   {exam.securitySettings.blockCopyPaste && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-950 border border-zinc-800 px-2 py-1 text-[11px] text-zinc-300">
-                      <Shield className="h-3 w-3 text-amber-400" /> Clipboard Block
+                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2 py-1 text-[11px] text-zinc-700 dark:text-zinc-300">
+                      <Shield className="h-3 w-3 text-amber-500 dark:text-amber-400" /> Clipboard Block
                     </span>
                   )}
                   {exam.securitySettings.tabSwitchDetection && (
-                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-950 border border-zinc-800 px-2 py-1 text-[11px] text-zinc-300">
-                      <AlertTriangle className="h-3 w-3 text-rose-400" /> Tab Switch Guard
+                    <span className="inline-flex items-center gap-1 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 px-2 py-1 text-[11px] text-zinc-700 dark:text-zinc-300">
+                      <AlertTriangle className="h-3 w-3 text-rose-500 dark:text-rose-400" /> Tab Switch Guard
                     </span>
                   )}
                 </div>
@@ -139,12 +139,12 @@ export default function ExamList({
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-800/80">
+            <div className="pt-3 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-200 dark:border-zinc-800/80">
               <div className="flex items-center gap-2">
                 {/* Share Button */}
                 <button
                   onClick={() => setSelectedExamForShare(exam)}
-                  className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white shadow hover:bg-indigo-500 transition-colors"
+                  className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white shadow hover:bg-indigo-700 transition-colors"
                 >
                   <Share2 className="h-3.5 w-3.5" />
                   <span>Share & QR</span>
@@ -153,18 +153,18 @@ export default function ExamList({
                 {/* Live Monitor */}
                 <button
                   onClick={() => onSelectExamForMonitoring(exam.id)}
-                  className="flex items-center gap-1.5 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-zinc-700 transition-colors"
+                  className="flex items-center gap-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                 >
-                  <Eye className="h-3.5 w-3.5 text-emerald-400" />
+                  <Eye className="h-3.5 w-3.5 text-emerald-500 dark:text-emerald-400" />
                   <span>Live Proctor</span>
                 </button>
 
                 {/* View Results */}
                 <button
                   onClick={() => onSelectExamForResults(exam.id)}
-                  className="flex items-center gap-1.5 rounded-xl bg-zinc-800 border border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-zinc-700 transition-colors"
+                  className="flex items-center gap-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-700 shadow-sm transition-colors"
                 >
-                  <Users className="h-3.5 w-3.5 text-cyan-400" />
+                  <Users className="h-3.5 w-3.5 text-cyan-500 dark:text-cyan-400" />
                   <span>Results</span>
                 </button>
               </div>
@@ -174,7 +174,7 @@ export default function ExamList({
                 <Link
                   href={`/exam/${exam.id}?code=${exam.accessCode}`}
                   target="_blank"
-                  className="p-2 text-zinc-400 hover:text-indigo-400 transition-colors"
+                  className="p-2 text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   title="Test as student in new tab"
                 >
                   <ExternalLink className="h-4 w-4" />
@@ -187,7 +187,7 @@ export default function ExamList({
                       onDeleteExam(exam.id);
                     }
                   }}
-                  className="p-2 text-zinc-500 hover:text-rose-400 transition-colors"
+                  className="p-2 text-zinc-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
                   title="Delete Exam"
                 >
                   <Trash2 className="h-4 w-4" />
